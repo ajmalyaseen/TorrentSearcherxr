@@ -5,11 +5,11 @@ from pyrogram.types import Message
 from helpers.torrent import get_torrent_buttons
 
 
-@Client.on_message(filters.command('searcher') & filters.private)
+@Client.on_message(filters.command('search') & filters.private)
 async def search(c: Client, m: Message):
     if m.via_bot is not None:
         return
-    status = await m.reply_text("Searching your torrent file", user_id = message.from_user.id) 
+    status = await m.reply_text("Searching your torrent file", reply_to_message_id=m.message_id) 
     markup = await get_torrent_buttons(m, status)
     if markup is None:
         return
