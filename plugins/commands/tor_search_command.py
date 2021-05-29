@@ -9,7 +9,7 @@ from helpers.torrent import get_torrent_buttons
 def search(client, message):
     if m.via_bot is not None:
         return
-    status = await m.reply_text("Searching your torrent file", reply_to_message_id=m.message_id)
+    status = await m.reply_text("Searching your torrent file", user_id = message.from_user.id) 
     markup = await get_torrent_buttons(m, status)
     if markup is None:
         return
